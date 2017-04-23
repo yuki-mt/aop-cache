@@ -15,7 +15,7 @@ class DataService
 	/**
 	 * @UseCache
 	 */
-	public function getById($id, $useCache = true, $saveCache = true) {
+	public function getById($id, $useCache, $saveCache) {
 		//can be more complicated;
 		return $this->db->getById($id);
 	}
