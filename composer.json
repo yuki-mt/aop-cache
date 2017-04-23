@@ -1,0 +1,16 @@
+{
+    "name": "yuki_mt/aop-cache",
+    "autoload": {
+        "psr-4": {
+            "YukiMt\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "yuki-mt"
+        }
+    ],
+    "require": {
+        "ray/aop": "2.0"
+    }
+}
