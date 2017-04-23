@@ -7,7 +7,7 @@ use Ray\Aop\MethodInvocation;
 
 class CacheManager implements MethodInterceptor
 {
-	private $cache;
+	private $cache; // KVS (such as Redis, Memcache) should be used in the real world
 	private $useCacheKey;
 	private $saveCacheKey;
 
