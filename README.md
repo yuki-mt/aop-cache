@@ -104,6 +104,10 @@ The cache key of the method above:
 A_myMethod_aop_34
 ```
 
+**all arguments needs to be able to convert into string.**
+
+so if you use a class in your method, the class needs to have `__toString()` method.
+
 #### exclude some parameters
 e.g.
 
