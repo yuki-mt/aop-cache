@@ -76,7 +76,7 @@ function myMethod($saveCache, $useCache){
 #### the basic form of cache key: 
 
 ```
-<clasa name>_<function name>_<arg1>_<arg2>_...
+<class name>_<function name>_<arg1>_<arg2>_...
 ```
 
 e.g.
