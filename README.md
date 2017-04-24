@@ -1,6 +1,7 @@
 # AOP-Cache
 ## What is it
 sample code to demonstrate cache control by using [Ray.aop](https://github.com/ray-di/Ray.Aop) (Aspect Oriented)
+
 ## Demo
 ```
 $ composer install
@@ -38,12 +39,11 @@ You got 340.          # <- score in cache is also 340 now
 
 ```
 ## How to use
-
 Refer: [DataService](https://github.com/yuki-mt/aop-cache/blob/master/app/DataSource/DataService.php)
 
 By adding `@UseCache` annotation, your method is replaced with [invoke](https://github.com/yuki-mt/aop-cache/blob/master/app/DataSource/Cache/CacheManager.php#L20) method of `CacheManager`.
 
-([Here](https://github.com/yuki-mt/aop-cache/blob/master/app/DataSource/DataServiceFactory.php#L22), your class (in this sample code, `DataService` class), `UseCache` annotation, and `CacheManager` are binded.
+([Here](https://github.com/yuki-mt/aop-cache/blob/master/app/DataSource/Cache/CacheServiceFactory.php#L15), your class (in this sample code, `DataService` class), `UseCache` annotation, and `CacheManager` are binded.
 
 ```
 use YukiMt\DataSource\Cache\Annotation\UseCache;
@@ -82,6 +82,9 @@ function myMethod($saveCache, $useCache){
 e.g.
 
 ```
+use YukiMt\DataSource\Cache\Annotation\UseCache;
+use YukiMt\DataSource\Cache\CacheServiceFactory;
+
 class A
 {
 	/**
@@ -92,7 +95,7 @@ class A
 	}
 }
 
-$a = new A();
+$a = CacheServiceFactory::create(A::class);
 $a->myMethod("aop", 34, true);
 ```
 
@@ -122,7 +125,7 @@ class A
 	}
 }
 
-$a = new A();
+$a = CacheServiceFactory::create(A::class);
 $a->myMethod("aop", 34, true, "hoge");
 ```
 
