@@ -39,7 +39,7 @@ class CacheManager implements MethodInterceptor
 		return $result;
 	}
 
-	private function getCache(string $key){
+	private function getCache($key){
 		if(array_key_exists($key, $this->cache)){
 			return $this->cache[$key];
 		} else {
@@ -47,11 +47,11 @@ class CacheManager implements MethodInterceptor
 		}
 	}
 
-	private function setCache(string $key, $value){
+	private function setCache($key, $value){
 		$this->cache[$key] = $value;
 	}
 
-	private function getCacheKey(MethodInvocation $invocation, array $args): string{
+	private function getCacheKey(MethodInvocation $invocation, $args) {
 		$className = get_class($invocation->getThis());
 		$method = $invocation->getMethod();
 		$methodName = $method->getShortName();
@@ -64,7 +64,7 @@ class CacheManager implements MethodInterceptor
 		return "{$className}_{$methodName}_{$argKey}";
 	}
 
-	private function getArguments(MethodInvocation $invocation): array{
+	private function getArguments(MethodInvocation $invocation) {
 		$params = $invocation->getMethod()->getParameters();
 		$args = $invocation->getArguments();
 		$result = array();
@@ -74,7 +74,7 @@ class CacheManager implements MethodInterceptor
 		return $result;
 	}
 
-	private function getExclusiveParams(\ReflectionMethod $method): array{
+	private function getExclusiveParams(\ReflectionMethod $method) {
 		$params = array($this->useCacheKey, $this->saveCacheKey);
 		preg_match('/@UseCache\((exclusive=)?"(.+)"\)/', $method->getDocComment(), $match);
 		if(count($match) > 2){

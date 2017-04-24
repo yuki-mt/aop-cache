@@ -21,7 +21,7 @@ class Database
 		$this->records[1]['score'] = 120.0;
 	}
 
-	public function getById(int $id): array {
+	public function getById($id) {
 		foreach ($this->records as $row) {
 			if($row['id'] == $id)
 				return $row;
@@ -29,7 +29,7 @@ class Database
 		return array();
 	}
 
-	public function updateById(int $id, float $score): bool{
+	public function updateById($id, $score) {
 		foreach ($this->records as &$row) {
 			if($row['id'] == $id){
 				$row['score'] = (float)$score;

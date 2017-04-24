@@ -1,9 +1,10 @@
 <?php
 require_once __DIR__.'/../vendor/autoload.php';
 
-use YukiMt\DataSource\DataServiceFactory;
+use YukiMt\DataSource\Cache\CacheServiceFactory;
+use YukiMt\DataSource\DataService;
 
-$db = DataServiceFactory::create();
+$db = CacheServiceFactory::create(DataService::class);
 
 while(true){
 	echo "\n";
@@ -28,7 +29,7 @@ while(true){
 	}
 }
 
-function getStdin(string $msg, array $options = []){
+function getStdin($msg, $options = []){
 	if(empty($options)){
 		$optionStr = '';
 	} else {
